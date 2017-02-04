@@ -1,6 +1,9 @@
 # Docker PHP Development Starter #
 
+This is project for local development using docker.
 Project contains compose file and a settings of all images.
+
+Fully tested on OS X 10.12 with lastest version of Docker.
 
 ## Images ##
 - Nginx (https://hub.docker.com/_/nginx/)
@@ -58,3 +61,9 @@ Redis, MySQL, Postgres, pgAdmin store their data locally.
 - ./redis/data:/data
 - ./postgres/data:/var/lib/postgresql/data
 - ./postgres/admin:/data
+
+## In future ##
+
+- find good web log ui
+- configure dnsmasq
+- ...
