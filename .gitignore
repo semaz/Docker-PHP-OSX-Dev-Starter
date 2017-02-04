@@ -8,8 +8,13 @@
 # Vhosts
 nginx/sites/*
 !nginx/sites/test.conf
+!nginx/sites/intro.conf
 !nginx/sites/symfony.conf
 !nginx/sites/default.conf
+!nginx/sites/admin.intro.conf
+!nginx/sites/admin.redis.conf
+!nginx/sites/admin.mysql.conf
+!nginx/sites/admin.memcached.conf
 
 # tmp
 logs/*
