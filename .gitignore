@@ -1,0 +1,22 @@
+# PhpStorm files
+.idea
+/*~
+
+# System files
+.DS_Store
+
+# Vhosts
+nginx/sites/*
+!nginx/sites/test.conf
+!nginx/sites/symfony.conf
+!nginx/sites/default.conf
+
+# tmp
+logs/*
+mysql/data/*
+redis/data/*
+postgres/data/*
+postgres/admin/*
+
+# test
+dnsmasq

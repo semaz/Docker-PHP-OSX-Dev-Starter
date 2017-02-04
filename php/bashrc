@@ -1,0 +1,35 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+# Note: PS1 and umask are already set in /etc/profile. You should not
+# need this unless you want different defaults for root.
+# PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
+# umask 022
+
+# Some more alias to avoid making mistakes:
+# alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+
+alias composer='php /usr/bin/composer'
+alias phpres='service php7.0-fpm restart'
+
+export CLICOLOR=1
+export TERM="xterm-color"
+export PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
+
+alias c='clear'
+alias ll='ls -la'
+
+alias ~="cd ~"
+alias cd..='cd ..'
+alias ..='cd ..'
+
+cdl() { cd "$@"; ls; }
+cdla() { cd "$@"; ls -la; }
+
+alias mkdir='mkdir -pv'
+
+mcd () {
+    mkdir $1;
+    cd $1
+}
