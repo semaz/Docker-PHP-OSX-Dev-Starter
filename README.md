@@ -24,7 +24,9 @@ Fully tested on OS X 10.12 with lastest version of Docker.
 
 ## Run ##
 
-`cd ~/Docker && dcu`
+1.`cd ~/Docker && dcu`
+2. add `127.0.0.1 intro.dev` to /etc/hosts
+3. open in browser http://intro.dev
 
 The containers will be restarted independently.
 
