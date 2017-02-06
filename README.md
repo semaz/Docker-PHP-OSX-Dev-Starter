@@ -18,7 +18,7 @@ Fully tested on OS X 10.12 with lastest version of Docker.
 
 ## Install ##
 
-1. `git clone git@github.com:DevCreel/Docker-PHP-Dev-Starter.git ~/Docker`
+1. `git clone https://github.com/DevCreel/Docker-PHP-Dev-Starter.git ~/Docker`
 2. Place your projects into folder `~/Sites`
 3. Run `cd && sh Docker/install.sh`
 
