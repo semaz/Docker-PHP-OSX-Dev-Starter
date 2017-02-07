@@ -1,8 +1,8 @@
-version: '3'
+version: '2'
 
 services:
     nginx:
-        image: nginx:latest
+        image: nginx:1.11.3-alpine
         container_name: nginx
         restart: always
         environment:
@@ -12,7 +12,6 @@ services:
             - "443:443"
         volumes:
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./nginx/admins/:/etc/nginx/sites-enabled/:ro
             - ./nginx/sites/:/etc/nginx/sites-enabled/:ro
             - ./../Sites/:/var/www/html
             - ./admin:/var/www/html/admin
