@@ -72,11 +72,21 @@ services:
             - "6379:6379"
 
     rabbitmq:
-        image: rabbitmq:3.6-management
+        image: frodenas/rabbitmq:latest
         container_name: rabbitmq
+        hostname: rabbitmq
         restart: always
+        environment:
+#            RABBITMQ_DEFAULT_USER: "root"
+            RABBITMQ_USERNAME: "root"
+#            RABBITMQ_DEFAULT_PASS: "root"
+            RABBITMQ_PASSWORD: "root"
+#        volumes:
+#            - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+#            - ./data:/var/lib/rabbitmq/mnesia/
         ports:
-            - "8080:15672"
+            - "15672:15672"
+            - "5672:5672"
 
     postgres:
         image: postgres:9.6
