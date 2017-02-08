@@ -32,6 +32,7 @@ services:
         volumes:
             - ./php/bashrc:/root/.bashrc
             - ./php/php.ini:/etc/php/7.0/fpm/php.ini:ro
+            - ./php/php.ini:/usr/local/etc/php/php.ini:ro
             - ./php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro
             - ./../Sites/:/var/www/html
             - ./admin:/var/www/html/admin
