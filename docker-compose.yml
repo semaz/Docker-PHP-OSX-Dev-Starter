@@ -2,7 +2,7 @@ version: '2'
 
 services:
     nginx:
-        image: nginx:1.11.3-alpine
+        image: nginx:1.11.9
         container_name: nginx
         restart: always
         environment:
