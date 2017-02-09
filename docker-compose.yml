@@ -13,6 +13,8 @@ services:
         volumes:
             - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./vhosts/:/etc/nginx/sites-enabled/:ro
+            - ./../Sites/:/var/www/html
+            - ./admin:/var/www/admin
             - ./logs/nginx/:/var/log/nginx/
 
     php:
