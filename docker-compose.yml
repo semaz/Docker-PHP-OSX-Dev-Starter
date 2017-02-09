@@ -56,7 +56,7 @@ services:
         container_name: memcached
         restart: always
         environment:
-            MEMCACHED_MEMORY: "256"
+            MEMCACHED_MEMORY: "128"
         volumes:
             - ./logs/memcached:/var/log/
         ports:
