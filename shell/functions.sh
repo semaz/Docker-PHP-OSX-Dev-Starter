@@ -4,6 +4,7 @@
 alias dc='docker-compose'
 alias dck='dc kill'
 alias dcs='dc stop'
+alias dcd='dc down'
 alias dcu='dc up -d'
 alias dcr='dc restart'
 alias dcur='dc up --force-recreate -d'
