@@ -11,7 +11,7 @@
 # alias mv='mv -i'
 
 alias composer='php /usr/bin/composer'
-alias phpres='service php7.0-fpm restart'
+alias res='service php7.0-fpm restart'
 
 export CLICOLOR=1
 export TERM="xterm-color"
