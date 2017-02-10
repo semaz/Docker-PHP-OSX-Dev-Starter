@@ -14,7 +14,7 @@ alias dcb='dc build --force-rm'
 alias dservice='docker-service'
 
 # logs
-alias dlog='docker logs'
+alias dlog='docker logs --follow'
 alias dlogsc='docker-logs-clear'
 
 # login
