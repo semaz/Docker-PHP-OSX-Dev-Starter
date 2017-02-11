@@ -1,4 +1,4 @@
-# Docker PHP Development Starter #
+# Docker PHP OSX Development Starter #
 
 This is project for local development using docker.
 Project contains compose file and a settings of all images.
