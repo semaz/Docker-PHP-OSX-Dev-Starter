@@ -5,6 +5,8 @@ Project contains compose file and a settings of all images.
 
 Fully tested on OS X 10.12 with lastest version of Docker.
 
+For fix volume speed install https://github.com/EugenMayer/docker-sync and run `sh sync-start.sh`
+
 ## Images ##
 - Nginx (https://hub.docker.com/_/nginx/)
 - PHP7-FPM (custom from dockerfile)
