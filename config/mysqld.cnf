@@ -2,7 +2,7 @@
 pid-file	= /var/run/mysqld/mysqld.pid
 socket		= /var/run/mysqld/mysqld.sock
 datadir		= /var/lib/mysql
-log-error	= /var/log/mysql/error.log
+#log-error	= /var/log/mysql/error.log
 
 init_connect='SET collation_connection = utf8_general_ci'
 init_connect='SET NAMES utf8'
@@ -16,7 +16,7 @@ symbolic-links=0
 
 max_allowed_packet=256M
 general_log=1
-general_log_file=mysqld.log
+general_log_file=/var/log/mysql/mysqld.log
 
 [client]
 default_character_set = utf8
@@ -30,9 +30,9 @@ connect_timeout=2
 [mysql.server]
 user=mysql
 basedir=/var/lib
-#skip-networking
+skip-networking
 
 [safe_mysqld]
 err-log=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
-#skip-networking
+skip-networking
