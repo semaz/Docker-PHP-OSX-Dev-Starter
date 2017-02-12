@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 
-DOKER_PATH=$(dirname "${BASH_SOURCE}")
+DOCKER_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if grep -q "~/$DOKER_PATH/shell/functions.sh" ~/.bash_rc; ##note the space after the string you are searching for
+get_rc_path(){
+    if [ -f "~/.bashrc" ]; then
+        echo ".bashrc"
+    else
+        echo ".bash_rc"
+    fi
+}
+
+alias reloadBash="exec $SHELL -l"
+
+if grep -q "$DOCKER_PATH/shell/functions.sh" ~/$(get_rc_path)
 then
     echo "Docker scripts already installed."
 else
-    echo "\n# Docker functions autoload \nsource ~/$DOKER_PATH/shell/functions.sh" >> ~/.bash_rc;
+    echo "\n# Docker functions autoload \nsource $DOCKER_PATH/shell/functions.sh" >> ~/$(get_rc_path);
     echo "Docker scripts installed.";
-    exec bash -l;
+    reloadBash;
 fi;

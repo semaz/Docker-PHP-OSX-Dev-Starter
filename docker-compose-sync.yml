@@ -4,23 +4,22 @@ services:
     nginx:
         image: nginx:1.11.9
         container_name: nginx
-        restart: always
         environment:
             NGINX_ERROR_LOG_LEVEL: 'notice'
         ports:
             - "80:80"
             - "443:443"
+        volumes_from:
+            - container:web:rw
+            - container:admin:rw
         volumes:
             - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./vhosts/:/etc/nginx/sites-enabled/:ro
-            - ./../Sites:/var/www/html
-            - ./admin:/var/www/admin
             - ./logs/nginx/:/var/log/nginx/
 
     php:
         build: ./build/php
         container_name: php
-        restart: always
         expose:
             - 9000
         external_links:
@@ -31,20 +30,20 @@ services:
             - memcached
         user:
             root
+        volumes_from:
+            - container:web:rw
+            - container:admin:rw
         volumes:
             - ./build/php/bashrc:/root/.bashrc
             - ./config/php.ini:/etc/php/7.0/fpm/php.ini:ro
             - ./config/php.ini:/usr/local/etc/php/php.ini:ro
             - ./config/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro
             - ./config/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro
-            - ./../Sites:/var/www/html
-            - ./admin:/var/www/admin
             - ./logs/php:/var/log/
 
     mysql:
         image: mysql:5.7
         container_name: mysql
-        restart: always
         ports:
             - "3306:3306"
         volumes:
@@ -57,7 +56,6 @@ services:
     memcached:
         image: eeacms/memcached:1.4
         container_name: memcached
-        restart: always
         environment:
             MEMCACHED_MEMORY: "128"
         volumes:
@@ -68,7 +66,6 @@ services:
     redis:
         image: redis:3.2-alpine
         container_name: redis
-        restart: always
         volumes:
             - ./data/redis:/data
         ports:
@@ -77,11 +74,12 @@ services:
     rabbitmq:
         image: frodenas/rabbitmq:latest
         container_name: rabbitmq
-        restart: always
         hostname: rabbitmq
         environment:
             RABBITMQ_USERNAME: "root"
             RABBITMQ_PASSWORD: "root"
+#        volumes:
+#            - ./config/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
         ports:
             - "15672:15672"
             - "5672:5672"
@@ -89,7 +87,6 @@ services:
     postgres:
         image: postgres:9.6
         container_name: postgres
-        restart: always
         environment:
             POSTGRES_PASSWORD: 'postgres'
         volumes:
@@ -100,7 +97,6 @@ services:
     portainer:
         image: portainer/portainer
         container_name: portainer
-        restart: always
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         ports:
@@ -109,12 +105,15 @@ services:
     pgadmin:
         image: foxylion/pgadmin4
         container_name: pgadmin
-        restart: always
         environment:
             SERVER_MODE: "False"
         external_links:
             - postgres
         volumes:
-            - ./data/pgadmin:/data
+            - ./data/pgadmin/:/data
         ports:
             - "5050:80"
+
+volumes:
+    web:
+        external: true

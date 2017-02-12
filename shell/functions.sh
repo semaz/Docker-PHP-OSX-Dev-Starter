@@ -13,6 +13,10 @@ alias dcb='dc build --force-rm'
 # docker service
 alias dservice='docker-service'
 
+# docker-sync-stack
+alias ds='docker-sync'
+alias dss='docker-sync-stack'
+
 # logs
 alias dlog='docker logs'
 alias dlogsc='docker-logs-clear'
@@ -24,9 +28,14 @@ alias dlogin='docker-login'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 
+# stop & kill
+alias dsall='docker stop $(docker ps -a -q)'
+alias dkall='docker kill $(docker ps -a -q)'
+
 # rm
 alias drm='docker rm -f'
 alias drmi='docker rmi -f'
+alias drmall='docker rm -f $(docker ps -a -q)'
 alias drmall='docker rm -f $(docker ps -a -q)'
 alias drmiall='docker rmi -f $(docker images -q)'
 
@@ -34,6 +43,11 @@ alias drmiall='docker rmi -f $(docker images -q)'
 alias dm='docker-machine'
 alias dme='docker-machine-env'
 
+# restart aliases
+alias dphpres='dservice php php7.0-fpm restart'
+alias dngres='dservice nginx nginx restart'
+
+# functions
 docker-machine-env() {
     eval $(docker-machine env $1)
 }
