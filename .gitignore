@@ -16,10 +16,6 @@ vhosts/*
 !vhosts/admin.memcached.conf
 
 # tmp
-logs/
-data/
-data2/
+logs/*
+data/*
 admin/memcached/Temp
-
-# future
-dnsmasq

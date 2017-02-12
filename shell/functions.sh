@@ -18,7 +18,7 @@ alias ds='docker-sync'
 alias dss='docker-sync-stack'
 
 # logs
-alias dlog='docker logs'
+alias dlog='docker logs --follow'
 alias dlogsc='docker-logs-clear'
 
 # login
