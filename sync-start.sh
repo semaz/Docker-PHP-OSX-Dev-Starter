@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-screen -d -m docker-sync-stack start
+screen -d -m dss start
