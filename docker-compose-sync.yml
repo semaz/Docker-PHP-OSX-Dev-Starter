@@ -13,7 +13,9 @@ services:
             - container:web:rw
             - container:admin:rw
         volumes:
-            - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
+            - ./config/nginx/locations.conf:/etc/nginx/locations.conf:ro
             - ./vhosts/:/etc/nginx/sites-enabled/:ro
             - ./logs/nginx/:/var/log/nginx/
 
@@ -35,10 +37,10 @@ services:
             - container:admin:rw
         volumes:
             - ./build/php/bashrc:/root/.bashrc
-            - ./config/php.ini:/etc/php/7.0/fpm/php.ini:ro
-            - ./config/php.ini:/usr/local/etc/php/php.ini:ro
-            - ./config/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro
-            - ./config/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro
+            - ./config/php/php.ini:/etc/php/7.0/fpm/php.ini:ro
+            - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
+            - ./config/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro
+            - ./config/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro
             - ./logs/php:/var/log/
 
     mysql:

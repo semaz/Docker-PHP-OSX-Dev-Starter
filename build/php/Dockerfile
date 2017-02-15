@@ -30,9 +30,10 @@ RUN docker-php-source extract \
     && docker-php-source delete
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
-    && echo "alias composer='php /usr/bin/composer'" >> ~/.bashrc
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV DEBIAN_FRONTEND teletype
+
+RUN export LC_ALL=C
 
 CMD ["php-fpm"]
