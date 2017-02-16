@@ -4,6 +4,7 @@ services:
     nginx:
         image: nginx:1.11.9
         container_name: nginx
+        hostname: nginx
         restart: always
         environment:
             NGINX_ERROR_LOG_LEVEL: 'notice'
@@ -22,6 +23,7 @@ services:
     php:
         build: ./build/php
         container_name: php
+        hostname: php
         restart: always
         expose:
             - 9000
@@ -46,6 +48,7 @@ services:
     mysql:
         image: mysql:5.7
         container_name: mysql
+        hostname: mysql
         restart: always
         ports:
             - "3306:3306"
@@ -59,6 +62,7 @@ services:
     memcached:
         image: eeacms/memcached:1.4
         container_name: memcached
+        hostname: memcached
         restart: always
         environment:
             MEMCACHED_MEMORY: "128"
@@ -70,6 +74,7 @@ services:
     redis:
         image: redis:3.2-alpine
         container_name: redis
+        hostname: redis
         restart: always
         volumes:
             - ./data/redis:/data
@@ -79,8 +84,8 @@ services:
     rabbitmq:
         image: frodenas/rabbitmq:latest
         container_name: rabbitmq
-        restart: always
         hostname: rabbitmq
+        restart: always
         environment:
             RABBITMQ_USERNAME: "root"
             RABBITMQ_PASSWORD: "root"
@@ -91,6 +96,7 @@ services:
     postgres:
         image: postgres:9.6
         container_name: postgres
+        hostname: postgres
         restart: always
         environment:
             POSTGRES_PASSWORD: 'postgres'
@@ -102,6 +108,7 @@ services:
     portainer:
         image: portainer/portainer
         container_name: portainer
+        hostname: portainer
         restart: always
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
@@ -111,6 +118,7 @@ services:
     pgadmin:
         image: foxylion/pgadmin4
         container_name: pgadmin
+        hostname: pgadmin
         restart: always
         environment:
             SERVER_MODE: "False"

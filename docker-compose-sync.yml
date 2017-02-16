@@ -4,6 +4,7 @@ services:
     nginx:
         image: nginx:1.11.9
         container_name: nginx
+        hostname: nginx
         environment:
             NGINX_ERROR_LOG_LEVEL: 'notice'
         ports:
@@ -22,6 +23,7 @@ services:
     php:
         build: ./build/php
         container_name: php
+        hostname: php
         expose:
             - 9000
         external_links:
@@ -46,6 +48,7 @@ services:
     mysql:
         image: mysql:5.7
         container_name: mysql
+        hostname: mysql
         ports:
             - "3306:3306"
         volumes:
@@ -58,6 +61,7 @@ services:
     memcached:
         image: eeacms/memcached:1.4
         container_name: memcached
+        hostname: memcached
         environment:
             MEMCACHED_MEMORY: "128"
         volumes:
@@ -68,6 +72,7 @@ services:
     redis:
         image: redis:3.2-alpine
         container_name: redis
+        hostname: redis
         volumes:
             - ./data/redis:/data
         ports:
@@ -89,6 +94,7 @@ services:
     postgres:
         image: postgres:9.6
         container_name: postgres
+        hostname: postgres
         environment:
             POSTGRES_PASSWORD: 'postgres'
         volumes:
@@ -99,6 +105,7 @@ services:
     portainer:
         image: portainer/portainer
         container_name: portainer
+        hostname: portainer
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         ports:
@@ -107,6 +114,7 @@ services:
     pgadmin:
         image: foxylion/pgadmin4
         container_name: pgadmin
+        hostname: pgadmin
         environment:
             SERVER_MODE: "False"
         external_links:

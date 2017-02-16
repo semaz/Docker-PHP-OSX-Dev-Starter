@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# docker-compose
+# compose
 alias dc='docker-compose'
 alias dck='dc kill'
 alias dcs='dc stop'
@@ -10,10 +10,10 @@ alias dcr='dc restart'
 alias dcur='dc up --force-recreate -d'
 alias dcb='dc build --force-rm'
 
-# docker service
+# service
 alias dservice='docker-service'
 
-# docker-sync-stack
+# sync
 alias ds='docker-sync'
 alias dss='docker-sync-stack'
 alias dssu='screen -d -m docker-sync-stack start'
@@ -30,7 +30,7 @@ alias dlogin='docker-login'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 
-# stop & kill
+# stop, kill
 alias dsall='docker stop $(docker ps -a -q)'
 alias dkall='docker kill $(docker ps -a -q)'
 
@@ -38,16 +38,15 @@ alias dkall='docker kill $(docker ps -a -q)'
 alias drm='docker rm -f'
 alias drmi='docker rmi -f'
 alias drmall='docker rm -f $(docker ps -a -q)'
-alias drmall='docker rm -f $(docker ps -a -q)'
 alias drmiall='docker rmi -f $(docker images -q)'
 
-# docker-machine
+# machine
 alias dm='docker-machine'
 alias dme='docker-machine-env'
 
 # restart aliases
-alias dphpres='dservice php php7.0-fpm restart'
-alias dngres='dservice nginx nginx restart'
+#alias dphpres='dservice php php7.0-fpm restart'
+#alias dngres='dservice nginx nginx restart'
 
 # functions
 docker-machine-env() {
