@@ -16,7 +16,6 @@ alias dservice='docker-service'
 # sync
 alias ds='docker-sync'
 alias dss='docker-sync-stack'
-#alias dssu='screen -d -m docker-sync-stack start'
 alias dssu='docker-sync-stack --daemon start'
 alias dssd='docker-sync-stack clean'
 

@@ -69,14 +69,14 @@ services:
         ports:
             - "11211:11211"
 
-    redis:
-        image: redis:3.2-alpine
-        container_name: redis
-        hostname: redis
-        volumes:
-            - ./data/redis:/data
-        ports:
-            - "6379:6379"
+#    redis:
+#        image: redis:3.2-alpine
+#        container_name: redis
+#        hostname: redis
+#        volumes:
+#            - ./data/redis:/data
+#        ports:
+#            - "6379:6379"
 
     rabbitmq:
         image: frodenas/rabbitmq:latest
@@ -102,15 +102,6 @@ services:
         ports:
             - "5432:5432"
 
-    portainer:
-        image: portainer/portainer
-        container_name: portainer
-        hostname: portainer
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-        ports:
-            - "9000:9000"
-
     pgadmin:
         image: foxylion/pgadmin4
         container_name: pgadmin
@@ -123,6 +114,15 @@ services:
             - ./data/pgadmin/:/data
         ports:
             - "5050:80"
+
+#    portainer:
+#        image: portainer/portainer
+#        container_name: portainer
+#        hostname: portainer
+#        volumes:
+#            - /var/run/docker.sock:/var/run/docker.sock
+#        ports:
+#            - "9000:9000"
 
 volumes:
     web:
