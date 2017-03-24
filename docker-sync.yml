@@ -20,5 +20,5 @@ syncs:
         sync_host_port: 10874
         sync_strategy: 'unison'
         sync_userid: '33'
-        watch_excludes: ['.DS_Store', '.unison.','.idea','.*/.git', '.gitignore','var/cache','var/logs','var/sessions']
-        sync_excludes:  ['.DS_Store', '.unison','.idea','.git', '.gitignore','var/cache','var/logs','var/sessions']
+        watch_excludes: ['.*/.DS_Store', '.*/.unison.','.*/.idea','.*/.git', '.gitignore','.*/var/cache','.*/var/logs','.*/var/sessions']
+        sync_excludes:  ['.DS_Store', '.unison*','.idea','.git/', '.gitignore','var/cache','var/logs','var/sessions']
