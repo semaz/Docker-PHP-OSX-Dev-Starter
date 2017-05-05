@@ -10,10 +10,9 @@ services:
         ports:
             - "80:80"
             - "443:443"
-        volumes_from:
-            - container:web:rw
-            - container:admin:rw
         volumes:
+            - app-web:/var/www/html:rw
+            - app-admin:/var/www/admin:rw
             - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
             - ./config/nginx/locations.conf:/etc/nginx/locations.conf:ro
@@ -34,10 +33,9 @@ services:
             - memcached
         user:
             root
-        volumes_from:
-            - container:web:rw
-            - container:admin:rw
         volumes:
+            - app-web:/var/www/html:rw
+            - app-admin:/var/www/admin:rw
             - ./build/php/bashrc:/root/.bashrc
             - ./config/php/php.ini:/etc/php/7.0/fpm/php.ini:ro
             - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
@@ -115,15 +113,17 @@ services:
         ports:
             - "5050:80"
 
-#    portainer:
-#        image: portainer/portainer
-#        container_name: portainer
-#        hostname: portainer
-#        volumes:
-#            - /var/run/docker.sock:/var/run/docker.sock
-#        ports:
-#            - "9000:9000"
+    portainer:
+        image: portainer/portainer
+        container_name: portainer
+        hostname: portainer
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - "9000:9000"
 
 volumes:
-    web:
+    app-web:
+        external: true
+    app-admin:
         external: true

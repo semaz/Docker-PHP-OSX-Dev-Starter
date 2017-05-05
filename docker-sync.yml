@@ -5,18 +5,16 @@ options:
     compose-file-path: 'docker-compose-sync.yml'
 
 syncs:
-    web:
+    app-web:
          src: './../Sites'
-         dest: '/var/www/html'
          sync_host_port: 10873
          sync_strategy: 'unison'
          sync_userid: '33'
          watch_excludes: ['.DS_Store', '.unison.','.idea','.*/.git', '.gitignore','var/cache','var/logs','var/sessions']
          sync_excludes:  ['.DS_Store', '.unison','.idea','.git', '.gitignore','var/cache','var/logs','var/sessions']
 
-    admin:
+    app-admin:
         src: './admin'
-        dest: '/var/www/admin'
         sync_host_port: 10874
         sync_strategy: 'unison'
         sync_userid: '33'
