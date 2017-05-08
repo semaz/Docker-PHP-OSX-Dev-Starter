@@ -1,22 +1,23 @@
 version: "2"
 
 options:
-    verbose: true
     compose-file-path: 'docker-compose-sync.yml'
 
 syncs:
     app-web:
-         src: './../Sites'
+         src: '../Sites'
          sync_host_port: 10873
          sync_strategy: 'unison'
+#         sync_strategy: 'native_osx'
          sync_userid: '33'
-         watch_excludes: ['.DS_Store', '.unison.','.idea','.*/.git', '.gitignore','var/cache','var/logs','var/sessions']
-         sync_excludes:  ['.DS_Store', '.unison','.idea','.git', '.gitignore','var/cache','var/logs','var/sessions']
+         watch_excludes: ['.*/.DS_Store', '.*/.unison.','.*/.idea','.*/.git', '*/.gitignore','*/var/cache','*/var/logs','*/var/sessions']
+         sync_excludes:  ['.DS_Store', '.unison','.idea/*','.git/*', '.gitignore','var/cache/*','var/logs/*','var/sessions/*']
 
     app-admin:
         src: './admin'
         sync_host_port: 10874
+#        sync_strategy: 'native_osx'
         sync_strategy: 'unison'
         sync_userid: '33'
-        watch_excludes: ['.*/.DS_Store', '.*/.unison.','.*/.idea','.*/.git', '.gitignore','.*/var/cache','.*/var/logs','.*/var/sessions']
-        sync_excludes:  ['.DS_Store', '.unison*','.idea','.git/', '.gitignore','var/cache','var/logs','var/sessions']
+        watch_excludes: ['.*/.DS_Store', '.*/.unison.','.*/.idea','.*/.git', '*/.gitignore','.*/var/cache','.*/var/logs','.*/var/sessions']
+        sync_excludes:  ['.DS_Store', '.unison*','.idea/*','.git/*', '.gitignore','var/cache/*','var/logs/*','var/sessions/*']
