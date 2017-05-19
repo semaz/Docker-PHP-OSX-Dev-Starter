@@ -8,12 +8,10 @@ syncs:
          src: '../Sites'
          sync_strategy: 'native_osx'
          sync_userid: '33'
-         watch_excludes: ['.*/.DS_Store', '.*/.unison.','.*/.idea','.*/.git', '*/.gitignore','*/var/cache','*/var/logs','*/var/sessions']
-         sync_excludes:  ['.DS_Store', '.unison','.idea/*','.git/*', '.gitignore','var/cache/*','var/logs/*','var/sessions/*']
+         sync_args: "-ignore='Path .idea' -ignore='Path .git' -ignore='Name .DS_Store' -ignore='Name .unison' -ignore='Path var/logs' -ignore='Path var/cache' -ignore='Path var/sessions' "
 
     app-admin:
         src: './admin'
         sync_strategy: 'native_osx'
         sync_userid: '33'
-        watch_excludes: ['.*/.DS_Store', '.*/.unison.','.*/.idea','.*/.git', '*/.gitignore','.*/var/cache','.*/var/logs','.*/var/sessions']
-        sync_excludes:  ['.DS_Store', '.unison*','.idea/*','.git/*', '.gitignore','var/cache/*','var/logs/*','var/sessions/*']
+        sync_args: "-ignore='Path .idea' -ignore='Path .git' -ignore='Name .DS_Store' -ignore='Name .unison' -ignore='Path var/logs' -ignore='Path var/cache' -ignore='Path var/sessions' "
