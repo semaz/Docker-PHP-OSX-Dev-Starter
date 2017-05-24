@@ -17,5 +17,5 @@ vhosts/*
 
 # tmp
 logs/*
-data/*
+data/*/*
 admin/memcached/Temp/*
