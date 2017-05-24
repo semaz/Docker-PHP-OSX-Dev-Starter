@@ -117,6 +117,7 @@ services:
         image: portainer/portainer
         container_name: portainer
         hostname: portainer
+        command: --no-auth --no-analytics
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - ./data/portainer:/data
