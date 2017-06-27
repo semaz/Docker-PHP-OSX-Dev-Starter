@@ -124,16 +124,16 @@ services:
         ports:
             - "9000:9000"
 
-    elk:
-        image: willdurand/elk
-        ports:
-            - 81:80
-        volumes:
-            - ./config/logstash.conf:/etc/logstash/logstash.conf
-            - ./config/patterns:/opt/logstash/patterns
-        volumes_from:
-            - php
-            - nginx
+#    elk:
+#        image: willdurand/elk
+#        ports:
+#            - 81:80
+#        volumes:
+#            - ./config/logstash.conf:/etc/logstash/logstash.conf
+#            - ./config/patterns:/opt/logstash/patterns
+#        volumes_from:
+#            - php
+#            - nginx
 
 volumes:
     app-web:
