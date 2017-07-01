@@ -76,18 +76,18 @@ services:
 #        ports:
 #            - "6379:6379"
 
-    rabbitmq:
-        image: frodenas/rabbitmq:latest
-        container_name: rabbitmq
-        hostname: rabbitmq
-        environment:
-            RABBITMQ_USERNAME: "root"
-            RABBITMQ_PASSWORD: "root"
-#        volumes:
-#            - ./config/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
-        ports:
-            - "15672:15672"
-            - "5672:5672"
+#    rabbitmq:
+#        image: frodenas/rabbitmq:latest
+#        container_name: rabbitmq
+#        hostname: rabbitmq
+#        environment:
+#            RABBITMQ_USERNAME: "root"
+#            RABBITMQ_PASSWORD: "root"
+##        volumes:
+##            - ./config/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+#        ports:
+#            - "15672:15672"
+#            - "5672:5672"
 
     postgres:
         image: postgres:9.6
