@@ -24,7 +24,7 @@ RUN cd /tmp && git clone https://github.com/php-memcached-dev/php-memcached && c
     && phpize && ./configure --disable-memcached-sasl && make && make install
 
 RUN docker-php-source extract \
-    && pecl install redis apc apcu apcu_bc \
+    && pecl install redis apcu apcu_bc \
     && docker-php-ext-install -j$(nproc) gd bcmath pdo_mysql pdo_pgsql pcntl zip opcache mysqli intl \
     && docker-php-ext-enable opcache redis apcu memcached \
     && docker-php-source delete

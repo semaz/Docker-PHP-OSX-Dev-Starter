@@ -20,7 +20,7 @@ alias dssu='docker-sync-stack --daemon start'
 alias dssd='docker-sync-stack clean'
 
 # logs
-alias dlog='docker logs --follow'
+alias dlog='docker logs -f'
 alias dlogsc='docker-logs-clear'
 
 # login
