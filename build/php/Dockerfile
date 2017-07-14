@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --force-yes php7.0-fpm php7.0-dev php-p
     libpng-dev libjpeg-dev libxml2-dev libpq-dev php7.0-apcu php7.0-gd php7.0-curl \
     php7.0-cli php7.0-bcmath php7.0-sqlite3 mysql-client libicu52 icu-devtools libicu-dev git nano \
     libxml2-dev libjpeg62-turbo-dev libpng12-dev libpng12-0 libpng3 libfreetype6 libfreetype6-dev \
-    libmemcached-dev libmemcached11 php7.0-xdebug
+    libmemcached-dev libmemcached11 php7.0-xdebug php7.0-bcmath
 
 # Memcached
 RUN cd /tmp && git clone https://github.com/php-memcached-dev/php-memcached && cd php-memcached && git checkout php7 \
