@@ -37,4 +37,8 @@ ENV DEBIAN_FRONTEND teletype
 
 RUN export LC_ALL=C
 
+RUN wget https://phar.phpunit.de/phpunit.phar \
+    && chmod +x phpunit.phar \
+    && mv phpunit.phar /usr/local/bin/phpunit
+
 CMD ["php-fpm"]
