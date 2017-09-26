@@ -81,17 +81,17 @@ services:
 #        ports:
 #            - "6379:6379"
 
-    rabbitmq:
-        image: frodenas/rabbitmq:latest
-        container_name: rabbitmq
-        hostname: rabbitmq
-        restart: always
-        environment:
-            RABBITMQ_USERNAME: "root"
-            RABBITMQ_PASSWORD: "root"
-        ports:
-            - "15672:15672"
-            - "5672:5672"
+#    rabbitmq:
+#        image: frodenas/rabbitmq:latest
+#        container_name: rabbitmq
+#        hostname: rabbitmq
+#        restart: always
+#        environment:
+#            RABBITMQ_USERNAME: "root"
+#            RABBITMQ_PASSWORD: "root"
+#        ports:
+#            - "15672:15672"
+#            - "5672:5672"
 
     postgres:
         image: postgres:9.6

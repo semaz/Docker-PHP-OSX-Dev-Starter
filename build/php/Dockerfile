@@ -16,7 +16,7 @@ RUN apt-get install -y --force-yes apt-transport-https lsb-release ca-certificat
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 
 RUN apt-get update && apt-get install -y --force-yes php-pear php7.1-common php-all-dev \
-    php7.1-intl php7.1-json php7.1-mbstring php7.1-mcrypt php7.1-memcached php7.1-mysql \
+    php7.1-fpm php7.1-intl php7.1-json php7.1-mbstring php7.1-mcrypt php7.1-memcached php7.1-mysql \
     php7.1-opcache php7.1-pgsql php7.1-redis php7.1-zip php7.1-xml libcurl4-openssl-dev \
     libpng-dev libjpeg-dev libxml2-dev libpq-dev php7.1-apcu php7.1-gd php7.1-curl \
     php7.1-cli php7.1-bcmath php7.1-sqlite3 mysql-client libicu52 icu-devtools libicu-dev git nano \
