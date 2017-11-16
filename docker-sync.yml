@@ -5,15 +5,15 @@ options:
 
 syncs:
     app-web:
-         src: '../Sites'
-         sync_strategy: 'native_osx'
-         sync_userid: '33'
-         sync_excludes: ['Path .*/.idea', 'Path .*/.git', 'Path .*/.var/logs', 'Path .*/.var/cache', 'Path .*/.var/sessions', 'Name .gitignore', 'Name .unison', 'Name .DS_Store']
-         watch_excludes: ['.*/.idea', '.*/.git', '.*/var/logs', '.*/var/cache', '.*/var/sessions', '.gitignore', '.unison', '.DS_Store']
+        src: '../Sites'
+        sync_strategy: 'native_osx'
+        sync_userid: '33'
+        sync_excludes: ['Name */.idea', 'Name */.git', 'Name */var/logs', 'Name */var/cache', 'Name */var/sessions', 'Name .gitignore', 'Name .unison', 'Name .DS_Store']
+        watch_excludes: ['*/.idea', '*/.git', '*/var/logs', '*/var/cache', '*/var/sessions', '.gitignore', '.unison', '.DS_Store']
 
     app-admin:
         src: './admin'
         sync_strategy: 'native_osx'
         sync_userid: '33'
-        sync_excludes: ['Path .*/.idea', 'Path .*/.git', 'Path .*/.var/logs', 'Path .*/.var/cache', 'Path .*/.var/sessions', 'Name .gitignore', 'Name .unison', 'Name .DS_Store']
-        watch_excludes: ['.*/.idea', '.*/.git', '.*/var/logs', '.*/var/cache', '.*/var/sessions', '.gitignore', '.unison', '.DS_Store']
+        sync_excludes: ['Name */.idea', 'Name */.git', 'Name */var/logs', 'Name */var/cache', 'Name */var/sessions', 'Name .gitignore', 'Name .unison', 'Name .DS_Store']
+        watch_excludes: ['*/.idea', '*/.git', '*/var/logs', '*/var/cache', '*/var/sessions', '.gitignore', '.unison', '.DS_Store']
