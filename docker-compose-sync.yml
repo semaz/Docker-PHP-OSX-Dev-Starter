@@ -37,10 +37,11 @@ services:
             - app-admin:/var/www/admin:nocopy
             - app-web:/var/www/html:nocopy
             - ./build/php/bashrc:/root/.bashrc
-            - ./config/php/php.ini:/etc/php/7.0/fpm/php.ini:ro
-            - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
-            - ./config/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro
-            - ./config/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro
+            - ./config/php/php-fpm.conf:/etc/php/7.1/fpm/php-fpm.conf:ro
+            - ./config/php/www.conf:/etc/php/7.1/fpm/pool.d/www.conf:ro
+            - ./config/php/cli/php.ini:/etc/php/7.1/cli/php.ini:ro
+            - ./config/php/fpm/php.ini:/etc/php/7.1/fpm/php.ini:ro
+            - ./config/php/fpm/php.ini:/usr/local/etc/php/php.ini:ro
             - ./logs/php:/var/log/
 
     mysql:
