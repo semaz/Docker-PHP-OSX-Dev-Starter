@@ -11,7 +11,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - app-admin:/var/www/admin:nocopy
+#            - app-admin:/var/www/admin:nocopy
             - app-web:/var/www/html:nocopy
             - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
@@ -31,8 +31,6 @@ services:
             - rabbitmq
             - postgres
             - memcached
-        user:
-            root
         volumes:
             - app-admin:/var/www/admin:nocopy
             - app-web:/var/www/html:nocopy
