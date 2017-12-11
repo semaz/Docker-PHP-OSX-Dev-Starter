@@ -23,7 +23,8 @@ services:
         build: ./build/php
         container_name: php
         hostname: php
-        expose: 9000
+        expose:
+            - 9000
         external_links:
             - mysql
             - redis

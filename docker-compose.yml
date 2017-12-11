@@ -25,7 +25,8 @@ services:
         container_name: php
         hostname: php
         restart: always
-        expose: 9000
+        expose:
+            - 9000
         external_links:
             - mysql
             - redis

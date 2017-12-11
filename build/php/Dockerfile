@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --force-yes php-pear php7.1-common \
     php7.1-fpm php7.1-intl php7.1-json php7.1-memcached php7.1-mysql php7.1-cli \
     php7.1-opcache php7.1-pgsql php7.1-redis php7.1-xml php7.1-curl php7.1-xdebug \
     locales libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libmemcached-dev \
-    zlib1g-dev libicu-dev libpq-dev libxml2-dev libmagickwand-dev curl git nano \
+    zlib1g-dev libicu-dev libpq-dev libxml2-dev libmagickwand-dev graphviz \
     && dpkg-reconfigure -f noninteractive locales \
     && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
     && locale-gen
@@ -26,7 +26,7 @@ RUN cd /tmp && git clone https://github.com/php-memcached-dev/php-memcached && c
     && phpize && ./configure --disable-memcached-sasl && make && make install
 
 RUN docker-php-source extract \
-    && pecl install redis apcu imagick mongodb \
+    && pecl install redis apcu imagick mongodb xdebug \
     && echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd bcmath pdo_mysql pdo_pgsql pgsql mysqli mcrypt pcntl zip \
@@ -42,12 +42,11 @@ RUN wget https://phar.phpunit.de/phpunit.phar \
     && chmod +x phpunit.phar \
     && mv phpunit.phar /usr/local/bin/phpunit
 
-# XHProf
-RUN cd /tmp && git clone https://github.com/longxinH/xhprof && cd xhprof/extension \
-    && phpize && ./configure && make && make install \
-    && cp /usr/local/lib/php/extensions/no-debug-non-zts-20160303/xhprof.so /usr/lib/php/20160303/
-
 RUN apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# XHProf
+RUN mkdir /tmp/xhprof && cd /var/www && git clone https://github.com/longxinH/xhprof && cd xhprof/extension \
+    && phpize && ./configure && make && make install
 
 RUN usermod -u 1000 www-data
 RUN usermod -G staff www-data
