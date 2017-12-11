@@ -45,7 +45,7 @@ RUN wget https://phar.phpunit.de/phpunit.phar \
 # XHProf
 RUN cd /tmp && git clone https://github.com/longxinH/xhprof && cd xhprof/extension \
     && phpize && ./configure && make && make install \
-    && cp /usr/local/lib/php/extensions/no-debug-non-zts-20160303/xhprof.co /usr/lib/php/20160303/
+    && cp /usr/local/lib/php/extensions/no-debug-non-zts-20160303/xhprof.so /usr/lib/php/20160303/
 
 RUN apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 

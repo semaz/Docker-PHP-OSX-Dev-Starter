@@ -69,5 +69,4 @@ Redis, MySQL, Postgres, pgAdmin store their data locally.
 ## In future ##
 
 - find good web log ui
-- configure dnsmasq
 - ...
