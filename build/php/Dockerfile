@@ -12,11 +12,11 @@ RUN apt-get install -y --force-yes apt-transport-https lsb-release ca-certificat
     && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 
-RUN apt-get update && apt-get install -y --force-yes php-pear php7.1-common \
+RUN apt-get update && apt-get install -y --force-yes php-pear php7.1-common php7.1-gmp \
     php7.1-fpm php7.1-intl php7.1-json php7.1-memcached php7.1-mysql php7.1-cli \
     php7.1-opcache php7.1-pgsql php7.1-redis php7.1-xml php7.1-curl php7.1-xdebug \
     locales libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libmemcached-dev \
-    zlib1g-dev libicu-dev libpq-dev libxml2-dev libmagickwand-dev graphviz \
+    zlib1g-dev libicu-dev libpq-dev libxml2-dev libmagickwand-dev libgmp-dev libmhash-dev graphviz \
     && dpkg-reconfigure -f noninteractive locales \
     && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
     && locale-gen
@@ -28,8 +28,9 @@ RUN cd /tmp && git clone https://github.com/php-memcached-dev/php-memcached && c
 RUN docker-php-source extract \
     && pecl install redis apcu imagick mongodb xdebug \
     && echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini \
+    && docker-php-ext-configure gmp \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd bcmath pdo_mysql pdo_pgsql pgsql mysqli mcrypt pcntl zip \
+    && docker-php-ext-install -j$(nproc) gd bcmath pdo_mysql pdo_pgsql pgsql mysqli mcrypt pcntl zip gmp \
     opcache intl mbstring \
     && docker-php-ext-enable opcache redis apcu memcached imagick \
     && docker-php-source delete
