@@ -8,12 +8,12 @@ syncs:
         src: '../Sites'
         sync_strategy: 'native_osx'
         sync_userid: '33'
-        sync_excludes: ['*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
-        watch_excludes: ['*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
+        sync_excludes: ['*/.git', '*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
+        watch_excludes: ['*/.git', '*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
 
     app-admin:
         src: './admin'
         sync_strategy: 'native_osx'
         sync_userid: '33'
-        sync_excludes: ['*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
-        watch_excludes: ['*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
+        sync_excludes: ['*/.git', '*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
+        watch_excludes: ['*/.git', '*/.idea', '.DS_Store', '.unison*', '*/var/logs', '*/var/cache', '*/var/sessions']
