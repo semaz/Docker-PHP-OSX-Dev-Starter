@@ -49,6 +49,9 @@ RUN apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /v
 RUN mkdir /tmp/xhprof && cd /var/www && git clone https://github.com/longxinH/xhprof && cd xhprof/extension \
     && phpize && ./configure && make && make install
 
+# Yaml
+RUN apt install libyaml-dev && pecl install yaml-2.0.0 && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
+
 RUN usermod -u 1000 www-data
 RUN usermod -G staff www-data
 

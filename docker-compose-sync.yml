@@ -2,27 +2,26 @@ version: '2'
 
 services:
     nginx:
-        image: nginx:1.11.9
-        container_name: nginx
+        image: nginx
         hostname: nginx
+        container_name: nginx
         environment:
             NGINX_ERROR_LOG_LEVEL: 'notice'
         ports:
             - "80:80"
             - "443:443"
         volumes:
-            - app-admin:/var/www/admin:nocopy
-            - app-web:/var/www/html:nocopy
+            - admin:/var/www/admin:nocopy
+            - web:/var/www/html:nocopy
             - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
             - ./config/nginx/locations.conf:/etc/nginx/locations.conf:ro
             - ./vhosts/:/etc/nginx/sites-enabled/:ro
-            - ./logs/nginx/:/var/log/nginx/
 
     php:
         build: ./build/php
-        container_name: php
         hostname: php
+        container_name: php
         expose:
             - 9000
         external_links:
@@ -32,77 +31,40 @@ services:
             - postgres
             - memcached
         volumes:
-            - app-admin:/var/www/admin:nocopy
-            - app-web:/var/www/html:nocopy
+            - admin:/var/www/admin:nocopy
+            - web:/var/www/html:nocopy
             - ./build/php/bashrc:/root/.bashrc
             - ./config/php/php-fpm.conf:/etc/php/7.1/fpm/php-fpm.conf:ro
             - ./config/php/www.conf:/etc/php/7.1/fpm/pool.d/www.conf:ro
             - ./config/php/cli/php.ini:/etc/php/7.1/cli/php.ini:ro
             - ./config/php/fpm/php.ini:/etc/php/7.1/fpm/php.ini:ro
             - ./config/php/fpm/php.ini:/usr/local/etc/php/php.ini:ro
-            - ./logs/php:/var/log/
 
     mysql:
-        image: mysql:5.7
-        container_name: mysql
+        image: mysql
         hostname: mysql
+        container_name: mysql
         ports:
             - "3306:3306"
         volumes:
             - ./data/mysql:/var/lib/mysql
             - ./config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
-            - ./logs/mysql:/var/log/
         environment:
             MYSQL_ROOT_PASSWORD: "root"
 
     memcached:
-        image: eeacms/memcached:1.4
-        container_name: memcached
+        image: memcached
         hostname: memcached
+        container_name: memcached
         environment:
             MEMCACHED_MEMORY: "128"
-        volumes:
-            - ./logs/memcached:/var/log/
         ports:
             - "11211:11211"
 
-#    redis:
-#        image: redis:3.2-alpine
-#        container_name: redis
-#        hostname: redis
-#        volumes:
-#            - ./data/redis:/data
-#        ports:
-#            - "6379:6379"
-
-#    rabbitmq:
-#        image: frodenas/rabbitmq:latest
-#        container_name: rabbitmq
-#        hostname: rabbitmq
-#        environment:
-#            RABBITMQ_USERNAME: "root"
-#            RABBITMQ_PASSWORD: "root"
-##        volumes:
-##            - ./config/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
-#        ports:
-#            - "15672:15672"
-#            - "5672:5672"
-
-    postgres:
-        image: postgres:9.6
-        container_name: postgres
-        hostname: postgres
-        environment:
-            POSTGRES_PASSWORD: 'postgres'
-        volumes:
-            - ./data/postgres:/var/lib/postgresql/data
-        ports:
-            - "5432:5432"
-
     portainer:
         image: portainer/portainer
-        container_name: portainer
         hostname: portainer
+        container_name: portainer
         command: --no-auth --no-analytics
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
@@ -110,19 +72,8 @@ services:
         ports:
             - "9000:9000"
 
-#    elk:
-#        image: willdurand/elk
-#        ports:
-#            - 81:80
-#        volumes:
-#            - ./config/logstash.conf:/etc/logstash/logstash.conf
-#            - ./config/patterns:/opt/logstash/patterns
-#        volumes_from:
-#            - php
-#            - nginx
-
 volumes:
-    app-web:
+    web:
         external: true
-    app-admin:
+    admin:
         external: true
