@@ -27,13 +27,6 @@ RUN apt-get install -y php-pear php7.1-common php7.1-cli php7.1-dev php7.1-mbstr
 RUN pecl channel-update pecl.php.net && pecl install redis apcu imagick mongodb
 #    && echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
 
-# composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
-
-# phpunit
-RUN wget https://phar.phpunit.de/phpunit.phar \
-    && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit
-
 # XHProf
 #RUN mkdir /tmp/xhprof && mkdir -p /var/www && cd /var/www && git clone https://github.com/longxinH/xhprof \
 #    && cd xhprof/extension && phpize && ./configure && make && make install
@@ -45,6 +38,17 @@ EXPOSE 9001
 
 # PHP socket
 RUN mkdir -p /var/run/php
+
+# composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+
+# phpunit
+RUN wget https://phar.phpunit.de/phpunit.phar \
+    && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit
+
+# codeception
+RUN curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept \
+    && chmod +x /usr/local/bin/codecept
 
 # Clean all
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
