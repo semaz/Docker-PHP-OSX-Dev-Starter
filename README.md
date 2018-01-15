@@ -3,19 +3,14 @@
 This is project for local development using docker.
 Project contains compose file and a settings of all images.
 
-Fully tested on OS X 10.12 with lastest version of Docker.
+Fully tested on OS X 10.13 with lastest version of Docker.
 
 For fix volume speed install https://github.com/EugenMayer/docker-sync and run `sh sync-start.sh`
 
 ## Images ##
-- Nginx (https://hub.docker.com/_/nginx/)
-- PHP7-FPM (custom from dockerfile)
+- PHP7-FPM with Nginx (custom from dockerfile)
 - MySQL (https://hub.docker.com/_/mysql/)
 - Memcached (https://hub.docker.com/r/eeacms/memcached/)
-- Redis (https://hub.docker.com/_/redis/)
-- RabbitMQ (https://hub.docker.com/_/rabbitmq/)
-- Postgres (https://hub.docker.com/_/postgres/)
-- pgAdmin4 (https://hub.docker.com/r/foxylion/pgadmin4/)
 - Portainer (https://github.com/portainer/portainer)
 
 ## Install ##
@@ -26,9 +21,7 @@ For fix volume speed install https://github.com/EugenMayer/docker-sync and run `
 
 ## Run ##
 
-1.`cd ~/Docker && dcu`
-2. add `127.0.0.1 intro.dev` to /etc/hosts
-3. open in browser http://intro.dev
+`cd ~/Docker && dcu`
 
 The containers will be restarted independently.
 
@@ -55,16 +48,13 @@ File `shell/functions.sh` contains useful docker aliases.
 
 ## Admins ##
 
-- pgAdmin is started as image
 - phpMyAdmin, phpMemcachedAdmin, phpRedisAdmin located if folder `admin`.
 
 ## Data ##
 
-Redis, MySQL, Postgres, pgAdmin store their data locally.
+MySQL, Portainer store their data locally.
 - ./mysql/data:/var/lib/mysql
-- ./redis/data:/data
-- ./postgres/data:/var/lib/postgresql/data
-- ./postgres/admin:/data
+- ./data/portainer:/data
 
 ## In future ##
 

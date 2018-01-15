@@ -10,12 +10,10 @@ vhosts/*
 !vhosts/test.conf
 !vhosts/symfony.conf
 !vhosts/default.conf
-!vhosts/admin.intro.conf
 !vhosts/admin.redis.conf
 !vhosts/admin.mysql.conf
 !vhosts/admin.memcached.conf
 
 # tmp
-logs/*
 data/*/*
 admin/memcached/Temp/*

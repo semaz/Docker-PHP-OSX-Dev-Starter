@@ -1,29 +1,16 @@
 version: '2'
 
 services:
-    nginx:
-        image: nginx
-        hostname: nginx
-        container_name: nginx
+
+    app:
+        build: ./build/php
+        hostname: app
+        container_name: app
         environment:
             NGINX_ERROR_LOG_LEVEL: 'notice'
         ports:
             - "80:80"
             - "443:443"
-        volumes:
-            - admin:/var/www/admin:nocopy
-            - web:/var/www/html:nocopy
-            - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
-            - ./config/nginx/locations.conf:/etc/nginx/locations.conf:ro
-            - ./vhosts/:/etc/nginx/sites-enabled/:ro
-
-    php:
-        build: ./build/php
-        hostname: php
-        container_name: php
-        expose:
-            - 9000
         external_links:
             - mysql
             - redis
@@ -33,12 +20,15 @@ services:
         volumes:
             - admin:/var/www/admin:nocopy
             - web:/var/www/html:nocopy
-            - ./build/php/bashrc:/root/.bashrc
             - ./config/php/php-fpm.conf:/etc/php/7.1/fpm/php-fpm.conf:ro
             - ./config/php/www.conf:/etc/php/7.1/fpm/pool.d/www.conf:ro
             - ./config/php/cli/php.ini:/etc/php/7.1/cli/php.ini:ro
             - ./config/php/fpm/php.ini:/etc/php/7.1/fpm/php.ini:ro
             - ./config/php/fpm/php.ini:/usr/local/etc/php/php.ini:ro
+            - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
+            - ./config/nginx/locations.conf:/etc/nginx/locations.conf:ro
+            - ./vhosts/:/etc/nginx/sites-enabled/:ro
 
     mysql:
         image: mysql

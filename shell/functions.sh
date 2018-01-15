@@ -44,10 +44,6 @@ alias drmiall='docker rmi -f $(docker images -q)'
 alias dm='docker-machine'
 alias dme='docker-machine-env'
 
-# restart aliases
-#alias dphpres='dservice php php7.0-fpm restart'
-#alias dngres='dservice nginx nginx restart'
-
 # functions
 docker-machine-env() {
     eval $(docker-machine env $1)
