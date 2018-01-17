@@ -29,6 +29,7 @@ services:
             - ./config/nginx/mime.types:/etc/nginx/mime.types:ro
             - ./config/nginx/locations.conf:/etc/nginx/locations.conf:ro
             - ./vhosts/:/etc/nginx/sites-enabled/:ro
+        working_dir: "/var/www/html"
 
     mysql:
         image: mysql:5.7
