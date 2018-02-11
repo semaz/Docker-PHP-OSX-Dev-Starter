@@ -45,7 +45,7 @@ services:
             MYSQL_ROOT_PASSWORD: "root"
 
     memcached:
-        image: eeacms/memcached:1.4
+        image: memcached
         hostname: memcached
         container_name: memcached
         restart: always
