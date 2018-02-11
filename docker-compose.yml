@@ -19,7 +19,7 @@ services:
             - postgres
             - memcached
         volumes:
-            - ./../Sites:/var/www/html
+            - ~/Sites:/var/www/html
             - ./admin:/var/www/admin
             - ./config/php/php.ini:/etc/php/7.0/fpm/php.ini:ro
             - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
