@@ -23,9 +23,6 @@ alias dssd='docker-sync-stack clean'
 alias dlog='docker logs -f'
 alias dlogsc='docker-logs-clear'
 
-# login
-alias dlogin='docker-login'
-
 # ps
 alias dps='docker ps'
 alias dpsa='docker ps -a'
@@ -49,8 +46,9 @@ docker-machine-env() {
     eval $(docker-machine env $1)
 }
 
-docker-login() {
-    docker exec -i -t $1 bash
+# login
+dlogin() {
+    docker exec -i -t ${1:-app} bash
 }
 
 docker-service() {

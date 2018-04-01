@@ -1,7 +1,5 @@
 FROM ubuntu:latest
 
-ENV REFRESHED_AT="2018–01–10"
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get dist-upgrade
@@ -36,13 +34,21 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 EXPOSE 9001
 
 # PHP socket
-RUN mkdir -p /var/run/php
+RUN mkdir -p /var/run/php/sessions && chmod 0777 -R /var/run/php/sessions
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
+# node
+RUN cd ~ && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash \
+    && . ~/.bashrc && nvm install v8.10.0 && nvm use v8.10.0 \
+    && npm install -g svgo && npm install -g --unsafe-perm puppeteer
+
+# optimize images
+RUN apt-get install -y jpegoptim optipng pngquant gifsicle
+
 # Clean all
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+RUN apt-get autoremove &&  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 RUN usermod -u 1000 www-data && usermod -G staff www-data
 
